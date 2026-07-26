@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleCart } from '../store/cartSlice';
 import { useTheme } from '../context/ThemeContext';
+import { HiMoon, HiSun, HiShoppingBag } from 'react-icons/hi2';
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -57,9 +58,9 @@ export default function Navbar() {
           <button
             onClick={toggleTheme}
             aria-label="Toggle Theme"
-            className="p-2.5 rounded-full bg-rose-50 dark:bg-neutral-800 text-rose-950 dark:text-rose-200 border border-rose-200 dark:border-neutral-700 hover:scale-105 transition active:scale-95 text-xs font-semibold"
+            className="p-2.5 rounded-full bg-rose-50 dark:bg-neutral-800 text-rose-950 dark:text-rose-200 border border-rose-200 dark:border-neutral-700 hover:scale-105 transition active:scale-95 text-base"
           >
-            {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
+            {theme === 'light' ? <HiMoon /> : <HiSun className="text-amber-400" />}
           </button>
 
           {/* Bag Toggle Button */}
@@ -67,7 +68,8 @@ export default function Navbar() {
             onClick={() => dispatch(toggleCart())}
             className="relative flex items-center space-x-2 bg-rose-50 dark:bg-neutral-800 hover:bg-rose-100 dark:hover:bg-neutral-700 text-rose-950 dark:text-rose-100 px-4 py-2.5 rounded-full border border-rose-200 dark:border-neutral-700 font-medium text-sm transition"
           >
-            <span>Bag</span>
+            <HiShoppingBag className="text-lg text-rose-900 dark:text-rose-300" />
+            <span className="hidden sm:inline">Bag</span>
             {totalItemCount > 0 && (
               <span className="bg-rose-900 dark:bg-rose-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
                 {totalItemCount}
